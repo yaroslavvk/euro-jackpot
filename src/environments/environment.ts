@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseApiURI: 'http://media.lottoland.com/api',
+  euroJackpotURN: '/drawings/euroJackpot'
 };
 
 /*

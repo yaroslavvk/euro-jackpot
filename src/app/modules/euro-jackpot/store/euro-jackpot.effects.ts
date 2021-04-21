@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
-import { EMPTY, of } from 'rxjs';
+import { of } from 'rxjs';
 import { LoadEuroJackpotsFailure, LoadEuroJackpotsSuccess, EuroJackpotActionTypes, EuroJackpotActions } from './euro-jackpot.actions';
+import {EuroJackpotApiService} from '../services/euro-jackpot-api.service';
 
 
 
@@ -14,8 +15,7 @@ export class EuroJackpotEffects {
   loadEuroJackpots$ = this.actions$.pipe(
     ofType(EuroJackpotActionTypes.LoadEuroJackpots),
     concatMap(() =>
-      /** An EMPTY observable only emits completion. Replace with your own observable API request */
-      EMPTY.pipe(
+      this.euroJackpotApiService.getEuroJackpotData().pipe(
         map(data => new LoadEuroJackpotsSuccess({ data })),
         catchError(error => of(new LoadEuroJackpotsFailure({ error }))))
     )
@@ -23,6 +23,9 @@ export class EuroJackpotEffects {
 
 
 
-  constructor(private actions$: Actions<EuroJackpotActions>) {}
+  constructor(
+    private actions$: Actions<EuroJackpotActions>,
+    private euroJackpotApiService: EuroJackpotApiService,
+    ) {}
 
 }

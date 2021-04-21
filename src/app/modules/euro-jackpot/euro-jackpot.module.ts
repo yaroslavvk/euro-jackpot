@@ -6,9 +6,9 @@ import { StoreModule } from '@ngrx/store';
 import { EuroJackpotEffects } from './store/euro-jackpot.effects';
 import * as fromEuroJackpot from './store/euro-jackpot.reducer';
 
-import { EuroJackpotContainerComponent } from './components/euro-jackpot-container/euro-jackpot-container.component';
 import { EuroJackpotRoutingModule } from './euro-jackpot-routing.module';
 
+import { EuroJackpotContainerComponent } from './components/euro-jackpot-container/euro-jackpot-container.component';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { EuroJackpotRoutingModule } from './euro-jackpot-routing.module';
     CommonModule,
     EuroJackpotRoutingModule,
     StoreModule.forFeature(fromEuroJackpot.euroJackpotFeatureKey, fromEuroJackpot.reducer),
-    EffectsModule.forFeature([EuroJackpotEffects])
+    EffectsModule.forFeature([EuroJackpotEffects]),
   ]
 })
 export class EuroJackpotModule { }

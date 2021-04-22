@@ -1,33 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatTableModule } from '@angular/material/table';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { StoreModule } from '@ngrx/store';
+import { NavigationComponent } from './navigation.component';
 import * as fromEuroJackpot from '../../store/euro-jackpot.reducer';
 
-import { EuroJackpotContainerComponent } from './euro-jackpot-container.component';
-import { OddsListComponent } from '../odds-list/odds-list.component';
-import { NavigationComponent } from '../navigation/navigation.component';
-
-describe('EuroJackpotContainerComponent', () => {
-  let component: EuroJackpotContainerComponent;
-  let fixture: ComponentFixture<EuroJackpotContainerComponent>;
+describe('NavigationComponent', () => {
+  let component: NavigationComponent;
+  let fixture: ComponentFixture<NavigationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        MatTableModule,
         MatButtonToggleModule,
         StoreModule.forRoot({}),
         StoreModule.forFeature(fromEuroJackpot.euroJackpotFeatureKey, fromEuroJackpot.reducer),
       ],
-      declarations: [ EuroJackpotContainerComponent, OddsListComponent, NavigationComponent ]
+      declarations: [ NavigationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EuroJackpotContainerComponent);
+    fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

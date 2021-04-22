@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseApiURI: 'http://media.lottoland.com/api',
+  baseApiURI: '/api',
   euroJackpotURN: '/drawings/euroJackpot'
 };
 

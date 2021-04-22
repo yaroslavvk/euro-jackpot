@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, concatMap, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { LoadEuroJackpotsFailure, LoadEuroJackpotsSuccess, EuroJackpotActionTypes, EuroJackpotActions } from './euro-jackpot.actions';
-import {EuroJackpotApiService} from '../services/euro-jackpot-api.service';
-
-
+import {
+  LoadEuroJackpotsFailure,
+  LoadEuroJackpotsSuccess,
+  EuroJackpotActionTypes,
+  EuroJackpotActions,
+  LoadCurrentEuroJackpotSuccess
+} from './euro-jackpot.actions';
+import { EuroJackpotApiService } from '../services/euro-jackpot-api.service';
+import { Jackpots } from '../models/jackpots';
 
 
 @Injectable()
@@ -16,7 +21,10 @@ export class EuroJackpotEffects {
     ofType(EuroJackpotActionTypes.LoadEuroJackpots),
     concatMap(() =>
       this.euroJackpotApiService.getEuroJackpotData().pipe(
-        map(data => new LoadEuroJackpotsSuccess({ data })),
+        mergeMap((data: Jackpots) => [
+          new LoadEuroJackpotsSuccess({ data }),
+          new LoadCurrentEuroJackpotSuccess({ data: data.last }),
+        ]),
         catchError(error => of(new LoadEuroJackpotsFailure({ error }))))
     )
   );

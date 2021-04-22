@@ -1,9 +1,11 @@
 import { Action } from '@ngrx/store';
+import {Jackpot, Jackpots} from '../models/jackpots';
 
 export enum EuroJackpotActionTypes {
   LoadEuroJackpots = '[EuroJackpot] Load EuroJackpots',
   LoadEuroJackpotsSuccess = '[EuroJackpot] Load EuroJackpots Success',
   LoadEuroJackpotsFailure = '[EuroJackpot] Load EuroJackpots Failure',
+  LoadCurrentEuroJackpotSuccess = '[EuroJackpot] Load Current Euro Jackpot Success',
 }
 
 export class LoadEuroJackpots implements Action {
@@ -12,7 +14,7 @@ export class LoadEuroJackpots implements Action {
 
 export class LoadEuroJackpotsSuccess implements Action {
   readonly type = EuroJackpotActionTypes.LoadEuroJackpotsSuccess;
-  constructor(public payload: { data: any }) { }
+  constructor(public payload: { data: Jackpots }) { }
 }
 
 export class LoadEuroJackpotsFailure implements Action {
@@ -20,5 +22,10 @@ export class LoadEuroJackpotsFailure implements Action {
   constructor(public payload: { error: any }) { }
 }
 
-export type EuroJackpotActions = LoadEuroJackpots | LoadEuroJackpotsSuccess | LoadEuroJackpotsFailure;
+export class LoadCurrentEuroJackpotSuccess implements Action {
+  readonly type = EuroJackpotActionTypes.LoadCurrentEuroJackpotSuccess;
+  constructor(public payload: { data: Jackpot }) { }
+}
+
+export type EuroJackpotActions = LoadEuroJackpots | LoadEuroJackpotsSuccess | LoadEuroJackpotsFailure | LoadCurrentEuroJackpotSuccess;
 

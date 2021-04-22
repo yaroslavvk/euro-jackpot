@@ -15,7 +15,7 @@ export class EuroJackpotApiService {
     private http: HttpClient,
   ) { }
 
-  getEuroJackpotData(): Observable<object> {
+  getEuroJackpotData(): Observable<any> {
     return this.http.get(this.euroJackpotURL);
   }
 }

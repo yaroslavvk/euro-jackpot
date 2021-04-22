@@ -8,11 +8,6 @@ describe('EuroJackpot Selectors', () => {
       [fromEuroJackpot.euroJackpotFeatureKey]: initialState
     });
 
-    expect(result).toEqual({
-      euroJackpots: {
-        last: {},
-        next: {}
-      }
-    });
+    expect(result).toEqual(initialState);
   });
 });

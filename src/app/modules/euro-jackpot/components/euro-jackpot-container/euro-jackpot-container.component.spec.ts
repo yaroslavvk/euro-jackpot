@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatTableModule } from '@angular/material/table';
 
+import { StoreModule } from '@ngrx/store';
 import { EuroJackpotContainerComponent } from './euro-jackpot-container.component';
+import * as fromEuroJackpot from '../../store/euro-jackpot.reducer';
+
+import { OddsListComponent } from '../odds-list/odds-list.component';
 
 describe('EuroJackpotContainerComponent', () => {
   let component: EuroJackpotContainerComponent;
@@ -8,7 +13,12 @@ describe('EuroJackpotContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EuroJackpotContainerComponent ]
+      imports: [
+        MatTableModule,
+        StoreModule.forRoot({}),
+        StoreModule.forFeature(fromEuroJackpot.euroJackpotFeatureKey, fromEuroJackpot.reducer),
+      ],
+      declarations: [ EuroJackpotContainerComponent, OddsListComponent ]
     })
     .compileComponents();
   });

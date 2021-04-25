@@ -69,20 +69,10 @@ export const initialState: State = {
 export function reducer(state = initialState, action: EuroJackpotActions): State {
   switch (action.type) {
 
-    case EuroJackpotActionTypes.LoadEuroJackpots:
-      return {
-        ...state,
-      };
-
     case EuroJackpotActionTypes.LoadEuroJackpotsSuccess:
       return {
         ...state,
         jackpotResults: action.payload.data,
-      };
-
-    case EuroJackpotActionTypes.LoadEuroJackpotsFailure:
-      return {
-        ...state,
       };
 
     case EuroJackpotActionTypes.LoadCurrentEuroJackpotSuccess:

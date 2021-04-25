@@ -18,6 +18,12 @@
     <td mat-cell *matCellDef="let element"> {{ element.prize | currency:'EUR' }} </td>
   </ng-container>
 
+  <!-- Special Amount Column -->
+  <ng-container matColumnDef="specialPrize">
+    <th mat-header-cell *matHeaderCellDef>Special amount</th>
+    <td mat-cell *matCellDef="let element"> {{ element.specialPrize | currency:'EUR' }} </td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

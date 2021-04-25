@@ -7,6 +7,7 @@ import { selectFeatureCurrentJackpotResult, selectFeatureJackpotResults } from '
 import { initialState } from '../../store/euro-jackpot.reducer';
 
 import { Jackpot, Jackpots, Odd } from '../../models/jackpots';
+import { LoadCurrentEuroJackpotSuccess } from '../../store/euro-jackpot.actions';
 
 @Component({
   selector: 'app-euro-jackpot-container',
@@ -38,11 +39,34 @@ export class EuroJackpotContainerComponent implements OnDestroy, OnInit {
     this.subscriptions.add(this.currentJackpotResult$.subscribe({
       next: currentJackpotResult => {
         this.currentJackpotResult = currentJackpotResult;
-        this.currentJackpotOdds = currentJackpotResult.odds ? Object.values(currentJackpotResult.odds) : [];
-        this.currentJackpotOdds = this.currentJackpotOdds.filter(odd => (odd.prize > 0));
-        this.currentJackpotOdds.map((odd, i) => (odd.tier = i + 1));
+        this.currentJackpotOdds = this.transformOddsToRender(currentJackpotResult);
       }
     }));
+  }
+
+  public transformOddsToRender(currentJackpotResult: Jackpot): Odd[] {
+    let odds = [];
+    odds = this.getOddsMapValues(currentJackpotResult.odds);
+    odds = odds.filter(odd => (odd.prize > 0));
+    odds.sort((a, b) => (a.prize < b.prize) ? 1 : -1);
+    odds.map(this.oddsMapHandler);
+    return odds;
+  }
+
+  public getOddsMapValues(odds: object | undefined): Odd[] {
+    return odds ? Object.values(odds) : [];
+  }
+
+  public oddsMapHandler(odd: Odd, i: number): Odd {
+    odd.tier = i + 1;
+    if (odd.specialPrize === 0) {
+      odd.specialPrize = null;
+    }
+    return odd;
+  }
+
+  public setCurrentJackpotResult(key: 'last' | 'next'): void {
+    this.store.dispatch(new LoadCurrentEuroJackpotSuccess({ data: this.jackpotResults[key] || initialState.currentJackpotResult }));
   }
 
 }

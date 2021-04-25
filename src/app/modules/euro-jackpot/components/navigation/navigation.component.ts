@@ -1,9 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-import { LoadCurrentEuroJackpotSuccess } from '../../store/euro-jackpot.actions';
 import { initialState } from '../../store/euro-jackpot.reducer';
-import * as fromEuroJackpot from '../../store/euro-jackpot.reducer';
 
 import { Jackpots } from '../../models/jackpots';
 
@@ -14,13 +11,13 @@ import { Jackpots } from '../../models/jackpots';
 })
 export class NavigationComponent {
   @Input() jackpotResults: Jackpots = initialState.jackpotResults;
+  @Output() navigateEmitter: EventEmitter<'last' | 'next'> = new EventEmitter<'last' | 'next'>();
 
   constructor(
-    private store: Store<fromEuroJackpot.State>,
   ) { }
 
   public setCurrentJackpotResult(key: 'last' | 'next'): void {
-    this.store.dispatch(new LoadCurrentEuroJackpotSuccess({ data: this.jackpotResults[key] || initialState.currentJackpotResult }));
+    this.navigateEmitter.emit(key);
   }
 
 }

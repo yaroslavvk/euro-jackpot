@@ -11,7 +11,7 @@ import * as fromEuroJackpot from './store/euro-jackpot.reducer';
 
 import { EuroJackpotRoutingModule } from './euro-jackpot-routing.module';
 
-import { EuroJackpotContainerComponent } from './components/euro-jackpot-container/euro-jackpot-container.component';
+import { EuroJackpotContainerComponent } from './containers/euro-jackpot-container/euro-jackpot-container.component';
 import { OddsListComponent } from './components/odds-list/odds-list.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { DateComponent } from './components/date/date.component';

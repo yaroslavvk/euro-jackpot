@@ -3,7 +3,6 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { catchError, concatMap, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import {
-  LoadEuroJackpotsFailure,
   LoadEuroJackpotsSuccess,
   EuroJackpotActionTypes,
   EuroJackpotActions,
@@ -20,12 +19,12 @@ export class EuroJackpotEffects {
   loadEuroJackpots$ = this.actions$.pipe(
     ofType(EuroJackpotActionTypes.LoadEuroJackpots),
     concatMap(() =>
-      this.euroJackpotApiService.getEuroJackpotData().pipe(
+      this.euroJackpotApiService.getEuroJackpotsData().pipe(
         mergeMap((data: Jackpots) => [
           new LoadEuroJackpotsSuccess({ data }),
           new LoadCurrentEuroJackpotSuccess({ data: data.last }),
         ]),
-        catchError(error => of(new LoadEuroJackpotsFailure({ error }))))
+        catchError(error => of(null)))
     )
   );
 

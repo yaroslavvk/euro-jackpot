@@ -8,5 +8,5 @@ import { Odd } from '../../models/jackpots';
 })
 export class OddsListComponent {
   @Input() currentJackpotOdds: Odd[] = [];
-  public displayedColumns: string[] = ['tier', 'winners', 'prize'];
+  public displayedColumns: string[] = ['tier', 'winners', 'prize', 'specialPrize'];
 }

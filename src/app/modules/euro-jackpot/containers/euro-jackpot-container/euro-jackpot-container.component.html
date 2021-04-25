@@ -1,4 +1,4 @@
-<app-navigation [jackpotResults]="jackpotResults"></app-navigation>
+<app-navigation [jackpotResults]="jackpotResults" (navigateEmitter)="setCurrentJackpotResult($event)"></app-navigation>
 <app-date [date]="currentJackpotResult.date"></app-date>
 <app-win-numbers [numbers]="currentJackpotResult.numbers"
                  [euroNumbers]="currentJackpotResult.euroNumbers"></app-win-numbers>

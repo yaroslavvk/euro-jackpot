@@ -14,7 +14,7 @@ describe('EuroJackpotEffects', () => {
       imports: [HttpClientTestingModule],
       providers: [
         EuroJackpotEffects,
-        provideMockActions(() => actions$)
+        provideMockActions(() => actions$),
       ]
     });
 

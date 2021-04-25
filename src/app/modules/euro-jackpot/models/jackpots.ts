@@ -3,10 +3,10 @@ export interface JackpotDate {
 }
 
 export interface Odd {
-  tier: number;
   prize: number;
-  specialPrize: number;
+  specialPrize: number | null;
   winners: number;
+  tier?: number;
 }
 
 export interface Jackpot {

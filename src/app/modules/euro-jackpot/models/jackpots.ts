@@ -1,4 +1,4 @@
-export interface Date {
+export interface JackpotDate {
   full: string;
 }
 
@@ -14,7 +14,7 @@ export interface Jackpot {
   climbedSince: number;
   closingDate: string;
   currency: string;
-  date: Date;
+  date: JackpotDate;
   drawingDate: string;
   euroNumbers: number[];
   jackpot: string;

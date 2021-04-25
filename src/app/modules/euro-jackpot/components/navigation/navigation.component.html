@@ -1,4 +1,4 @@
-<mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">
-  <mat-button-toggle value="last" (click)="setCurrentJackpotResult(group.value)">Last</mat-button-toggle>
-  <mat-button-toggle value="next" (click)="setCurrentJackpotResult(group.value)">Next</mat-button-toggle>
+<mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style" class="container">
+  <mat-button-toggle value="last" (click)="setCurrentJackpotResult(group.value)"><mat-icon>chevron_left</mat-icon>Last</mat-button-toggle>
+  <mat-button-toggle value="next" (click)="setCurrentJackpotResult(group.value)">Next<mat-icon>chevron_right</mat-icon></mat-button-toggle>
 </mat-button-toggle-group>

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
 
 import { StoreModule } from '@ngrx/store';
 import { NavigationComponent } from './navigation.component';
@@ -13,6 +14,7 @@ describe('NavigationComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         MatButtonToggleModule,
+        MatIconModule,
         StoreModule.forRoot({}),
         StoreModule.forFeature(fromEuroJackpot.euroJackpotFeatureKey, fromEuroJackpot.reducer),
       ],

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="numbers">
+    <span *ngFor="let number of numbers" class="number">{{ number }}</span>
+  </div>
+  <div *ngIf="numbers?.length && euroNumbers?.length" class="separator">
+    <mat-icon>add</mat-icon>
+  </div>
+  <div class="numbers euro">
+    <span *ngFor="let number of euroNumbers" class="number">{{ number }}</span>
+  </div>
+</div>

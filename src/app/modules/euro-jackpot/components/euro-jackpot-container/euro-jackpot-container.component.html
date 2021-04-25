@@ -1,3 +1,5 @@
 <app-navigation [jackpotResults]="jackpotResults"></app-navigation>
-<h1>{{ currentJackpotResult.date.full }}</h1>
+<app-date [date]="currentJackpotResult.date"></app-date>
+<app-win-numbers [numbers]="currentJackpotResult.numbers"
+                 [euroNumbers]="currentJackpotResult.euroNumbers"></app-win-numbers>
 <app-odds-list [currentJackpotOdds]="currentJackpotOdds"></app-odds-list>

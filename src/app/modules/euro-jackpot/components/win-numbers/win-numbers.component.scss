@@ -1,0 +1,40 @@
+$number-margin: 0 3.5px 0 3.5px;
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  margin: 10px 0 10px 0;
+
+  .numbers {
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+
+    .number {
+      margin: $number-margin;
+      width: 26px;
+      height: 26px;
+      border: 1px solid white;
+      border-radius: 50%;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    &.euro {
+      .number {
+        border-color: #ca7f26;
+      }
+    }
+  }
+
+  .separator {
+    margin: $number-margin;
+  }
+}

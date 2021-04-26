@@ -3,13 +3,17 @@ $number-margin: 0 3.5px 0 3.5px;
 .container {
   display: flex;
   justify-content: flex-start;
+  -webkit-justify-content: flex-start;
   align-content: center;
+  -webkit-align-content: center;
   margin: 10px 0 10px 0;
 
   .numbers {
     display: flex;
     justify-content: center;
+    -webkit-justify-content: center;
     align-content: flex-end;
+    -webkit-align-content: flex-end;
 
     .number {
       margin: $number-margin;
@@ -17,10 +21,13 @@ $number-margin: 0 3.5px 0 3.5px;
       height: 26px;
       border: 1px solid white;
       border-radius: 50%;
+      -webkit-border-radius: 50%;
       list-style: none;
       display: flex;
       justify-content: center;
+      -webkit-justify-content: center;
       align-items: center;
+      -webkit-align-content: center;
 
       &:first-child {
         margin-left: 0;
